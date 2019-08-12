@@ -1,18 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long dig_sum(string s)
-{
-
-    long ss=0;
-    for(int i=0;i<s.length();i++)
-    {
-        ss+=s[i]-'0';
-    }
-    return ss;
-
-}
-
 string rev(string s)
 {
     string u="";
@@ -65,29 +53,17 @@ string add_s(string a,string b)
     return rev(a);
 }
 
-string multi(string a,string b)
-{
-    if(a.length()<b.length())
-    {
-        swap(a,b);
-    }
-    string ss="";
-    b=rev(b);
-    for(int i=0;i<b.length();i++)
-    {
-        ss+="0";
-        int u=b[i]-'0';
-        for(int j=0;j<u;j++)
-        {
-            ss=add_s(ss,a);
-        }
-    }
-    return ss;
-
-
-}
-
 int main()
 {
-    cout<<multi("32","10");
+    string f="3",s="2";
+    int cnt=0;
+    for(int i=0;i<1000;i++)
+    {
+        string t=s;
+        s=add_s(f,s);
+        f=add_s(t,s);
+        if(f.length()>s.length())
+            cnt++;
+    }
+    cout<<cnt;
 }
